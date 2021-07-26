@@ -1,5 +1,13 @@
+<!-- Wellcome to {{title}}
+Hello {{user}}
+
+Product => {{product1.productName}}
 <ul>
-  <li>Laptop</li>
-  <li>Mouse</li>
-</ul>
+  <li *ngFor="let item of products">{{item.productName}}</li>
+  
+</ul> -->
+<app-navi></app-navi>
+<app-category></app-category>
+<app-product></app-product>
+
 <router-outlet></router-outlet>
