@@ -54,8 +54,12 @@ export class ProductComponent implements OnInit {
   }
   addToCart(product:Product)
   {
+    if(product.productId===1)
+    {
     this.toastrService.success("Sepete eklendi.",product.productName);
-    
+    }else{
+      
+    }
     console.log(product.productName);
   }
   
