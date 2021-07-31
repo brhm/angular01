@@ -3,6 +3,7 @@ import { Product } from 'src/app/models/product';
 import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -17,7 +18,9 @@ export class ProductComponent implements OnInit {
   
   // yukarıda import ettiğimiz HttpClient ı constructor da inject ediyoruz. 
   //buradan inject ettiğimiz class sayfada tanımlı olmuş olur ve istediğimiz yerde this ile çağırıp kullanırız.
-  constructor(private productService:ProductService,private activatedRoute:ActivatedRoute) { }
+  constructor(private productService:ProductService,
+    private activatedRoute:ActivatedRoute,
+    private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     console.log("init çalıştı");
@@ -48,6 +51,12 @@ export class ProductComponent implements OnInit {
      this.products=response.data
      this.dataLoaded=true;
    });
+  }
+  addToCart(product:Product)
+  {
+    this.toastrService.success("Sepete eklendi.",product.productName);
+    
+    console.log(product.productName);
   }
   
 }
