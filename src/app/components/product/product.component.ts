@@ -13,6 +13,8 @@ export class ProductComponent implements OnInit {
 
   products: Product[] = [];
   dataLoaded=false;
+  filterText="";
+  
   // yukarıda import ettiğimiz HttpClient ı constructor da inject ediyoruz. 
   //buradan inject ettiğimiz class sayfada tanımlı olmuş olur ve istediğimiz yerde this ile çağırıp kullanırız.
   constructor(private productService:ProductService,private activatedRoute:ActivatedRoute) { }

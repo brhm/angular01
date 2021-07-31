@@ -4,12 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 // angular cli ile eklediklerimiz otomatik olarak ekleniyor fakat 3rd olarak eklediğimiz kütüphaneleri manuel ekliyoruz.
 import { HttpClientModule } from '@angular/common/http';
 
+//html form taglarda ngModel kullanmak için FormsModule import ediyoruz.
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
