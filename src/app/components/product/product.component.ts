@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -20,7 +21,8 @@ export class ProductComponent implements OnInit {
   //buradan inject ettiğimiz class sayfada tanımlı olmuş olur ve istediğimiz yerde this ile çağırıp kullanırız.
   constructor(private productService:ProductService,
     private activatedRoute:ActivatedRoute,
-    private toastrService:ToastrService) { }
+    private toastrService:ToastrService,
+    private cartService:CartService) { }
 
   ngOnInit(): void {
     console.log("init çalıştı");
@@ -56,11 +58,12 @@ export class ProductComponent implements OnInit {
   {
     if(product.productId===1)
     {
-    this.toastrService.success("Sepete eklendi.",product.productName);
+
+    this.toastrService.error("Bu ürün sepete eklenemez.",product.productName);
     }else{
-      
+      this.cartService.addToCart(product);
+      this.toastrService.success("Sepete eklendi.",product.productName);
     }
-    console.log(product.productName);
   }
   
 }

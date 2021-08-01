@@ -10,21 +10,24 @@ export class CartService {
 
   constructor() { }
 
-  addToCart(product:Product)
-  {
-    let item=CartItems.find(c=>c.product?.productId===product.productId);
-    if(item)
-    {
-    item.quantity=item.quantity +1; // referans tipli olduğu için sepetteki Quantity değeride artar.
-    }else{
-      let cartItem=new CartItem();
-      cartItem.product=product;
-      cartItem.quantity=1;
+  addToCart(product: Product) {
+    let item = CartItems.find(c => c.product?.productId === product.productId);
+    if (item) {
+      item.quantity = item.quantity + 1; // referans tipli olduğu için sepetteki Quantity değeride artar.
+    } else {
+      let cartItem = new CartItem();
+      cartItem.product = product;
+      cartItem.quantity = 1;
       CartItems.push(cartItem);
 
     }
   }
-  list(): CartItem[]{
+  removeFromCart(product: Product) {
+    let item = CartItems.find(c => c.product.productId === product.productId);
+    CartItems.splice(CartItems.indexOf(item), 1); // cartitems daki product siliyoruz.
+  }
+
+  list(): CartItem[] {
     return CartItems;
   }
 }
