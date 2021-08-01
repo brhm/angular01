@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Product } from '../models/product';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,10 @@ export class ProductService {
     let newPath=this.apiUrl+"products/getbycategory?categoryId="+categoryId;
     //fonksiyonlarda class içindeki bir parametreyi çağırırken this i kullanırız.
     return this.httpClient.get<ListResponseModel<Product>>(newPath);
+  }
+
+  add(product:Product):Observable<ResponseModel>
+  {
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"products/add",product);
   }
 }
