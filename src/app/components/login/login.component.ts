@@ -41,12 +41,5 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-  isAuthenticated() {
-    if (this.localStorageService.get("token")) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
 }
